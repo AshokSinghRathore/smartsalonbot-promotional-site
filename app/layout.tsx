@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
@@ -54,8 +54,10 @@ export default function RootLayout({
                 href="https://www.code-aspire.com/"
                 title="code-aspire.com homepage"
               >
-                <span className="text-default-600">Developed by</span>
-                <p className="text-primary">CodeAspire</p>
+                {/* <span className="text-default-600"></span> */}
+                <p className="text-primary">
+                  &copy;CodeAspire {new Date().getFullYear()}
+                </p>
               </Link>
             </footer>
           </div>
