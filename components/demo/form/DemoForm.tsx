@@ -15,24 +15,31 @@ const DemoForm: React.FC = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (data: FormValues) => {
-    console.log(data);
+    console.log("Form data submitted successfully:", data);
+    
     // Trigger confetti on successful form submission
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
     });
-  };
+
+    // Reset the form after data is processed
+    reset();
+};
+
 
   return (
     <div className="sm:grid sm:my-auto items-center max-w-full gap-3 p-3">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+
         {/* Name Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller
@@ -62,7 +69,6 @@ const DemoForm: React.FC = () => {
                 label="Phone"
                 isRequired
                 errorMessage={errors.phone?.message}
-                value={String(field.value)} // Ensure value is a string
               />
             )}
           />
@@ -104,35 +110,20 @@ const DemoForm: React.FC = () => {
 
         {/* Submit Button */}
         <div className="flex w-full flex-wrap md:flex-nowrap mt-3">
-          <CustomButton text="Submit" />
+          <Button
+            type="submit"
+            disableRipple
+            className="w-full relative overflow-visible rounded-lg hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-lg after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 bg-blue-500"
+            variant="shadow"
+            color="primary"
+            size="lg"
+          >
+            Submit
+          </Button>
         </div>
+
       </form>
     </div>
-  );
-};
-
-interface CustomButtonProps {
-  text: string;
-}
-
-export const CustomButton: React.FC<CustomButtonProps> = ({ text }) => {
-  return (
-    <Button
-      disableRipple
-      className="w-full relative overflow-visible rounded-lg hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-lg after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 bg-blue-500"
-      variant="shadow"
-      color="primary"
-      size="lg"
-      onPress={() => {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
-      }}
-    >
-      {text}
-    </Button>
   );
 };
 

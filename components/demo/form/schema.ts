@@ -6,10 +6,10 @@ export const schema = z.object({
     required_error: "Name is required",
     invalid_type_error: "Invalid Name",
   }),
-  phone: z.number({
-    required_error: "Phone is required",
-    invalid_type_error: "Invalid Phone number",
-  }),
+  phone: z
+  .string()
+  .min(10, "Phone number must be at least 10 digits")
+  .regex(/^[0-9]+$/, "Phone number must only contain numbers"),
   email: z
     .string({
       required_error: "Email is required",
