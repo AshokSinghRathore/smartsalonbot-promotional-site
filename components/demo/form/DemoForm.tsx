@@ -8,9 +8,10 @@ import { Button } from "@nextui-org/button";
 
 import { schema } from "./schema";
 
+// Define the form schema using zod, and infer the FormValues type from it
 type FormValues = z.infer<typeof schema>;
 
-export default function DemoForm() {
+const DemoForm: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -32,6 +33,7 @@ export default function DemoForm() {
   return (
     <div className="sm:grid sm:my-auto items-center max-w-full gap-3 p-3">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        {/* Name Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller
             name="name"
@@ -47,6 +49,8 @@ export default function DemoForm() {
             )}
           />
         </div>
+
+        {/* Phone Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller
             name="phone"
@@ -58,10 +62,13 @@ export default function DemoForm() {
                 label="Phone"
                 isRequired
                 errorMessage={errors.phone?.message}
+                value={String(field.value)} // Ensure value is a string
               />
             )}
           />
         </div>
+
+        {/* Email Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller
             name="email"
@@ -77,6 +84,8 @@ export default function DemoForm() {
             )}
           />
         </div>
+
+        {/* Message Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller
             name="message"
@@ -92,13 +101,15 @@ export default function DemoForm() {
             )}
           />
         </div>
+
+        {/* Submit Button */}
         <div className="flex w-full flex-wrap md:flex-nowrap mt-3">
           <CustomButton text="Submit" />
         </div>
       </form>
     </div>
   );
-}
+};
 
 interface CustomButtonProps {
   text: string;
@@ -124,3 +135,5 @@ export const CustomButton: React.FC<CustomButtonProps> = ({ text }) => {
     </Button>
   );
 };
+
+export default DemoForm;
