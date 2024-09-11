@@ -20,9 +20,6 @@ export default function DemoPage() {
           We offer a complimentary demo to give customers a clear insight into
           our product.
         </h2>
-        <h2 className={subtitle({ class: "mt-4" })}>
-          Monday - Friday - 08:00 - 19:00
-        </h2>
         <Divider className="my-4 bg-gray-300" />
       </div>
       <DemoForm />

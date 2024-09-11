@@ -91,6 +91,40 @@ const DemoForm: React.FC = () => {
           />
         </div>
 
+        {/* City Field */}
+        <div className="flex w-full flex-wrap md:flex-nowrap">
+          <Controller
+            name="city"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                type="text"
+                label="City"
+                isRequired
+                errorMessage={errors.city?.message}
+              />
+            )}
+          />
+        </div>
+
+        {/*  Field */}
+        <div className="flex w-full flex-wrap md:flex-nowrap">
+          <Controller
+            name="address"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                type="text"
+                label="Address"
+                isRequired
+                errorMessage={errors.address?.message}
+              />
+            )}
+          />
+        </div>
+
         {/* Message Field */}
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <Controller

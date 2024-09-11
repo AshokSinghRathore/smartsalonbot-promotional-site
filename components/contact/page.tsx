@@ -16,11 +16,8 @@ export default function ContactPage() {
         <Card className="mt-12 w-full">
           <CardBody className="text-center">
             {/* <p>Make beautiful websites regardless of your design experience.</p> */}
-            <h2 className={subtitle()}>
-              Manhattan, New York, NY, United States
-            </h2>
             <h2 className={subtitle()}>📞 123-4567-890</h2>
-            <h2 className={subtitle()}>📧 shubhamlekhiwal11@gmail.com</h2>
+            <h2 className={subtitle()}>📧 customercare@smartsalonbot.com</h2>
           </CardBody>
         </Card>
       </div>

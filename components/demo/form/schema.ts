@@ -6,6 +6,14 @@ export const schema = z.object({
     required_error: "Name is required",
     invalid_type_error: "Invalid Name",
   }),
+  city: z.string({
+    required_error: "City is required",
+    invalid_type_error: "Invalid City",
+  }),
+  address: z.string({
+    required_error: "Address is required",
+    invalid_type_error: "Invalid Address",
+  }),
   phone: z
   .string()
   .min(10, "Phone number must be at least 10 digits")
