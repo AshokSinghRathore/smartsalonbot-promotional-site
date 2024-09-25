@@ -28,7 +28,7 @@ export const Navbar = () => {
             className="flex justify-start items-center gap-1 text-xl"
             href="/"
           >
-            <p className="font-bold text-inherit">Smart Salon Bot</p>
+            <p className="font-bold text-inherit">prism SFA</p>
             <Logo />
             <Logo />
           </NextLink>
